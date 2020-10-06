@@ -11,16 +11,17 @@ class ResultScreen extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     int res = rand.nextInt(100);
     return SafeArea(
-          child: Scaffold(
+      child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Color(0xFFe11d74),
                 Color(0xFFf688bb),
-                 Color(0xFFe11d74),
+                Color(0xFFe11d74),
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -33,10 +34,19 @@ class ResultScreen extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
               ),
-              Positioned(left: 50,top: 150, child: Text(nameres,style: TextStyle(fontSize: 50,),)),
               Positioned(
-                top: 250,
-                left: 60,
+                left: size.width * .05,
+                top: size.height * 0.22,
+                child: Text(
+                  nameres,
+                  style: TextStyle(
+                    fontSize: 50,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: size.height * 0.3,
+                left: size.width * .25,
                 child: SvgPicture.asset(
                   "images/love.svg",
                   height: 140,
@@ -44,14 +54,23 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 250,
-                right: 50,
-                child: Text("$lovernameres",style: TextStyle(fontSize: 50,),),
+                bottom: size.height * 0.35,
+                right: size.width * .05,
+                child: Text(
+                  "$lovernameres",
+                  style: TextStyle(
+                    fontSize: 50,
+                  ),
+                ),
               ),
-               Positioned(
+              Positioned(
                 bottom: 150,
-                
-                child: Text("$res%",style: TextStyle(fontSize: 50,),),
+                child: Text(
+                  "$res%",
+                  style: TextStyle(
+                    fontSize: 50,
+                  ),
+                ),
               ),
             ],
           ),
